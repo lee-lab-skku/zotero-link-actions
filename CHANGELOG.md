@@ -18,9 +18,9 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ### Removed
 
-- **Breaking:** All actions except the three copylink actions and Agent Link Bridge.
+- All actions except the three copylink actions and Agent Link Bridge **(breaking)**.
   Importing the new backup does not delete previously installed copies; delete any you no longer use in Actions & Tags.
-- **Breaking:** The JSON action backup release asset.
+- The JSON action backup release asset **(breaking)**.
   Update Actions from earlier releases reports later releases as manual imports; import `actions-zotero.yml` instead.
 
 ## [3.0.0] &mdash; 2026-11-09
@@ -115,10 +115,10 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ### Removed
 
-- **Breaking:** Remove the legacy `tara.groupID` fallback during preference setup.
+- Remove the legacy `tara.groupID` fallback during preference setup **(breaking)**.
   Users without a current organization setting must select their group once.
 
-- **Breaking:** Remove Share Item and Retrieve Item, including the share collection prompt from preference setup.
+- Remove Share Item and Retrieve Item, including the share collection prompt from preference setup **(breaking)**.
   Delete previously installed copies in Actions & Tags; automatic updates do not remove actions absent from the release backup.
 
 ## [3.0.0-beta.2] &mdash; 2026-10-13
@@ -147,21 +147,21 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ### Changed
 
-- **Breaking:** Require Zotero 10 and a compatible Actions & Tags plugin; earlier Zotero versions are no longer supported.
-- **Breaking:** Copy one selection link per resolved item instead of one per selected row, deduplicating parent and attachment selections.
+- Require Zotero 10 and a compatible Actions & Tags plugin; earlier Zotero versions are no longer supported **(breaking)**.
+- Copy one selection link per resolved item instead of one per selected row, deduplicating parent and attachment selections **(breaking)**.
   Include a collection path only when the collection context is unambiguous and the item belongs to it.
 - Fall back to item titles or keys when citation keys are unavailable.
 - **Sharing and retrieval**: Preserve tags, child notes, embedded images, attachments, and Zotero annotations when sharing or retrieving items.
   Linked files are imported as stored attachments, and URL attachments are retained.
-- **Breaking:** Limit sharing and retrieval to regular, non-trashed items in a different library from the destination; same-library copying is rejected.
-- **Breaking:** Require destination write permissions and all attachment files and note images to be locally available before copying; incomplete copies are no longer attempted.
-- **Breaking:** Move retrieved source items to the group library trash only after a successful copy, instead of permanently erasing them.
+- Limit sharing and retrieval to regular, non-trashed items in a different library from the destination; same-library copying is rejected **(breaking)**.
+- Require destination write permissions and all attachment files and note images to be locally available before copying; incomplete copies are no longer attempted **(breaking)**.
+- Move retrieved source items to the group library trash only after a successful copy, instead of permanently erasing them **(breaking)**.
   Zotero 10 Undo can restore the source without removing the destination copy.
-- **Breaking:** Require an `actions-zotero.json` release asset for automatic updates; YAML-only releases remain manually importable.
+- Require an `actions-zotero.json` release asset for automatic updates; YAML-only releases remain manually importable **(breaking)**.
   Import the YAML manually for the initial upgrade to this updater.
 - Preserve existing enabled settings and shortcuts during automatic updates.
 - Validate the entire release backup before updating any actions.
-- **Breaking:** Reject script actions with missing source files and action metadata without an explicit integer event or string data during the build.
+- Reject script actions with missing source files and action metadata without an explicit integer event or string data during the build **(breaking)**.
 - Resolve build paths relative to the build script so it can run from another working directory.
 
 ### Fixed
