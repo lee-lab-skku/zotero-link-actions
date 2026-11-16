@@ -13,14 +13,14 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ### Changed
 
-- The project is renamed to Zotero link actions, and the repository moved to `lee-lab-skku/zotero-link-actions`.
+- **The project name** is now Zotero link actions, and the repository moved to `lee-lab-skku/zotero-link-actions`.
   Backups record the new repository; GitHub redirects links to the previous repository name.
 
 ### Removed
 
-- All actions except the three copylink actions and Agent Link Bridge **(breaking)**.
+- **All other actions**, leaving only the three copylink actions and Agent Link Bridge **(breaking)**.
   Importing the new backup does not delete previously installed copies; delete any you no longer use in Actions & Tags.
-- The JSON action backup release asset **(breaking)**.
+- **The JSON action backup** release asset **(breaking)**.
   Update Actions from earlier releases reports later releases as manual imports; import `actions-zotero.yml` instead.
 
 ## [3.0.0] &mdash; 2026-11-09
@@ -38,11 +38,13 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 - **Per-annotation plain-text prefixes** for Agent Link Bridge requests, with an automatic em-dash separator and applied prefix metadata in responses.
   Surrounding whitespace is trimmed, empty prefixes add no separator, and prefixes work alongside word ranges without changing annotation text or link destinations.
   Explicit prefixes require the updated bridge and annotation action.
-- **A bundled `zot-jot` agent skill** for generating item, PDF annotation, and Better Notes links through Agent Link Bridge, with a self-contained API reference and setup and troubleshooting guidance.
+- **A bundled `zot-jot` agent skill** for generating item, PDF annotation, and Better Notes links through Agent Link Bridge.
+  It comes with a self-contained API reference and setup and troubleshooting guidance.
   It supports Markdown, HTML, and plain URL output and verifies applied word ranges and prefixes for annotation links.
   Releases include a validated `zot-jot.zip`, a direct download link, and a skill-directory link pinned to the release tag.
   Install or update the skill separately from the Zotero actions.
-- **Manual release previews** with an intended tag, the same tests and real Zotero verification as tag releases, and a downloadable bundle containing the release body, YAML/JSON backups, and skill ZIP.
+- **Manual release previews** with an intended tag and the same tests and real Zotero verification as tag releases.
+  Each preview produces a downloadable bundle containing the release body, YAML/JSON backups, and skill ZIP.
   The run summary shows the rendered release body and asset sizes; preview runs do not create tags or GitHub Releases.
 
 ### Changed
@@ -85,12 +87,14 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ### Changed
 
-- Embed updater version and source repository in script constants instead of custom action fields, so editing activation or menu settings in Actions & Tags retains this information.
+- **Embed updater version and source repository in script constants** instead of custom action fields.
+  Editing activation or menu settings in Actions & Tags then retains this information.
 - Turn on the Update Actions by default.
 
 ### Fixed
 
-- **Selection-level commands**: Run global preference, update, and VPN menu commands once per selection, filtering item-level follow-up calls without changing other action dispatches.
+- **Run selection-level menu commands once per selection**, filtering item-level follow-up calls without changing other action dispatches.
+  These are the global preference, update, and VPN menu commands.
   Suppress overlapping executions of the same command and release the guard after completion, cancellation, or failure.
 
 ## [3.0.0-beta.4] &mdash; 2026-10-14
@@ -115,10 +119,9 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ### Removed
 
-- Remove the legacy `tara.groupID` fallback during preference setup **(breaking)**.
+- **The legacy `tara.groupID` fallback** during preference setup **(breaking)**.
   Users without a current organization setting must select their group once.
-
-- Remove Share Item and Retrieve Item, including the share collection prompt from preference setup **(breaking)**.
+- **Share Item and Retrieve Item**, including the share collection prompt from preference setup **(breaking)**.
   Delete previously installed copies in Actions & Tags; automatic updates do not remove actions absent from the release backup.
 
 ## [3.0.0-beta.2] &mdash; 2026-10-13
@@ -147,17 +150,17 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ### Changed
 
-- Require Zotero 10 and a compatible Actions & Tags plugin; earlier Zotero versions are no longer supported **(breaking)**.
-- Copy one selection link per resolved item instead of one per selected row, deduplicating parent and attachment selections **(breaking)**.
+- Require Zotero 10 and a compatible Actions & Tags plugin **(breaking)**; earlier Zotero versions are no longer supported.
+- **Copy one selection link per resolved item** instead of one per selected row, deduplicating parent and attachment selections **(breaking)**.
   Include a collection path only when the collection context is unambiguous and the item belongs to it.
 - Fall back to item titles or keys when citation keys are unavailable.
-- **Sharing and retrieval**: Preserve tags, child notes, embedded images, attachments, and Zotero annotations when sharing or retrieving items.
+- **Preserve item contents** when sharing or retrieving items, including tags, child notes, embedded images, attachments, and Zotero annotations.
   Linked files are imported as stored attachments, and URL attachments are retained.
-- Limit sharing and retrieval to regular, non-trashed items in a different library from the destination; same-library copying is rejected **(breaking)**.
-- Require destination write permissions and all attachment files and note images to be locally available before copying; incomplete copies are no longer attempted **(breaking)**.
-- Move retrieved source items to the group library trash only after a successful copy, instead of permanently erasing them **(breaking)**.
+- Limit sharing and retrieval to regular, non-trashed items in a different library from the destination **(breaking)**; same-library copying is rejected.
+- Require destination write permissions and all attachment files and note images to be locally available before copying **(breaking)**; incomplete copies are no longer attempted.
+- **Move retrieved source items to the group library trash** only after a successful copy, instead of permanently erasing them **(breaking)**.
   Zotero 10 Undo can restore the source without removing the destination copy.
-- Require an `actions-zotero.json` release asset for automatic updates; YAML-only releases remain manually importable **(breaking)**.
+- **Require an `actions-zotero.json` release asset** for automatic updates **(breaking)**; YAML-only releases remain manually importable.
   Import the YAML manually for the initial upgrade to this updater.
 - Preserve existing enabled settings and shortcuts during automatic updates.
 - Validate the entire release backup before updating any actions.
@@ -189,7 +192,8 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ### Fixed
 
-- PDF annotation links now identify the parent attachment in the item path and the annotation in the query, fixing links that failed to open the PDF.
+- **PDF annotation links** now identify the parent attachment in the item path and the annotation in the query.
+  This fixes links that failed to open the PDF.
 
 ## [2.5.0] &mdash; 2026-01-07
 
