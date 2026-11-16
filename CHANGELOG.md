@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-For this changelog, `withdrawl` at commit `80b729a` is the initial baseline, without a release date; earlier versions are intentionally omitted.
+For this changelog, `withdrawal` at commit `80b729a` is the initial baseline, without a release date; earlier versions are intentionally omitted.
 Version `2.4.2` describes changes from that baseline, and each later version describes changes from the preceding listed version.
 
 ## [Unreleased]
@@ -241,7 +241,7 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 - The automatic updater's Tools menu entry.
 
-## [withdrawl]
+## [withdrawal]
 
 ### Added
 
@@ -265,4 +265,4 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 [2.5.0]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v2.4.3...v2.5.0
 [2.4.3]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v2.4.2...v2.4.3
 [2.4.2]: https://github.com/lee-lab-skku/zotero-link-actions/compare/80b729a...v2.4.2
-[withdrawl]: https://github.com/lee-lab-skku/zotero-link-actions/tree/80b729a
+[withdrawal]: https://github.com/lee-lab-skku/zotero-link-actions/tree/80b729a
