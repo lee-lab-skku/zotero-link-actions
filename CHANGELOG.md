@@ -11,6 +11,8 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ## [Unreleased]
 
+## [4.0.0-beta.1] &mdash; 2026-11-16
+
 ### Changed
 
 - **The project name** is now Zotero link actions, and the repository moved to `lee-lab-skku/zotero-link-actions`.
@@ -251,7 +253,8 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 - YAML backup generation and tag-triggered release builds.
 - Optional `/unread` tagging actions, disabled by default.
 
-[Unreleased]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v4.0.0-beta.1...HEAD
+[4.0.0-beta.1]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v3.0.0...v4.0.0-beta.1
 [3.0.0]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v3.0.0-rc.3...v3.0.0
 [3.0.0-rc.3]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v3.0.0-rc.2...v3.0.0-rc.3
 [3.0.0-rc.2]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v3.0.0-rc.1...v3.0.0-rc.2
