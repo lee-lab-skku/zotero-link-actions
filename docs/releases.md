@@ -19,6 +19,7 @@ The separate **Zotero integration** workflow runs manually and as a release requ
 Tag pushes do not start a second standalone test run.
 Superseded branch/PR test runs are cancelled; release runs are serialized per tag without cancelling an active release.
 External actions use major version tags to receive compatible updates.
+`astral-sh/setup-uv` is pinned to an exact release instead, because it does not publish major version tags.
 
 ### Artifact flow
 
