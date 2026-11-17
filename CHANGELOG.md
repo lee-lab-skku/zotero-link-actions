@@ -11,6 +11,10 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ## [Unreleased]
 
+### Fixed
+
+- Replacing Agent Link Bridge during a request no longer lets the old request copy to the clipboard or run alongside a new request; the new bridge answers `BUSY` until the old request ends.
+
 ## [4.0.0-rc.1] &mdash; 2026-11-17
 
 ### Changed

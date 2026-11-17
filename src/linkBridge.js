@@ -30,16 +30,21 @@ const enabled = key => manager()?.getActions(key)?.enabled === true;
 
 const bridge = {
     active: null,
+    busy: false,
     disposed: false,
+    // A replaced bridge's in-flight request still needs its receiver and its lock.
+    previous: previous || null,
     shutdownListener,
     // The dispatcher drops return values. Bind a result receiver only to the exact agent call.
     capture(action, target, targets, selectedCollection, trigger) {
-        const context = this.active;
-        if (this.disposed || trigger !== 'unknown' || !context || context.action !== action)
+        if (this.disposed || trigger !== 'unknown')
             return null;
         const ids = target ? [target.id] : (targets || []).map(entry => entry.id);
-        if (ids.length !== context.ids.length || ids.some((id, index) => id !== context.ids[index])
-            || (selectedCollection?.id || null) !== context.collectionID)
+        const context = [this.active, this.previous?.active].find(candidate => candidate
+            && candidate.action === action && ids.length === candidate.ids.length
+            && ids.every((id, index) => id === candidate.ids[index])
+            && (selectedCollection?.id || null) === candidate.collectionID);
+        if (!context)
             return null;
         const settle = result => {
             context.result = context.settled
@@ -54,8 +59,9 @@ const bridge = {
         };
     },
     dispose() {
+        // Keep an in-flight context so the replacement can still route its result away from menu output.
         this.disposed = true;
-        this.active = null;
+        this.previous = null;
         if (Zotero.Server.Endpoints[PATH] === Endpoint)
             delete Zotero.Server.Endpoints[PATH];
         if (Zotero.ActionLinkBridge === this)
@@ -173,7 +179,6 @@ async function dispatch(action, targets, selectedCollection, wordRange = null, p
     }
 }
 
-let busy = false;
 class Endpoint {
     supportedMethods = ['POST'];
     supportedDataTypes = ['application/json'];
@@ -186,9 +191,9 @@ class Endpoint {
             return response(403, failure('UNAUTHORIZED', 'A valid action link token is required.'));
         if (bridge.disposed || !enabled('linkBridge'))
             return response(503, failure('BRIDGE_UNAVAILABLE', 'The link bridge is disabled.'));
-        if (busy)
+        if (bridge.busy || bridge.previous?.busy)
             return response(409, failure('BUSY', 'Another link request is running. Retry after it finishes.'));
-        busy = true;
+        bridge.busy = true;
         try {
             const { action, targets, selectedCollection, wordRanges, prefixes } = await resolveRequest(request.data);
             const links = [];
@@ -205,8 +210,7 @@ class Endpoint {
             Zotero.logError(error);
             return response(500, failure('ACTION_FAILED', 'The link request failed. See the Zotero error log.'));
         } finally {
-            bridge.active = null;
-            busy = false;
+            bridge.busy = false;
         }
     }
 }

@@ -205,15 +205,22 @@ test('replacing a bridge during dispatch rejects the old request and leaves the 
     const original = env.Zotero.ActionsTags.api.actionManager.dispatchActionByKey;
     let resume, entered;
     const waiting = new Promise(resolve => { entered = resolve; });
+    let paused = false;
     env.Zotero.ActionsTags.api.actionManager.dispatchActionByKey = async (...args) => {
-        entered(); await new Promise(resolve => { resume = resolve; }); await original(...args);
+        if (!paused) {
+            paused = true; entered(); await new Promise(resolve => { resume = resolve; });
+        }
+        await original(...args);
     };
     const request = env.request(selection);
     await waiting;
     await run('linkBridge', env);
+    const overlapping = await env.request(selection);
+    assert.equal(overlapping.status, 409); assert.equal(overlapping.error.code, 'BUSY');
     resume();
     const result = await request;
     assert.equal(result.status, 503); assert.equal(result.error.code, 'BRIDGE_UNAVAILABLE');
+    assert.deepEqual(env.copied, []);
     env.Zotero.ActionsTags.api.actionManager.dispatchActionByKey = original;
     assert.equal((await env.request(selection)).status, 200);
 });
