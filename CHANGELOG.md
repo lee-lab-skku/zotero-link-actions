@@ -11,6 +11,8 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ## [Unreleased]
 
+## [4.0.0-rc.1] &mdash; 2026-11-17
+
 ### Changed
 
 - Action names shown in Actions & Tags now match the documentation: Copy Selection Link, Copy Annotation Link, Copy Note Link, and Agent Link Bridge.
@@ -266,7 +268,8 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 - YAML backup generation and tag-triggered release builds.
 - Optional `/unread` tagging actions, disabled by default.
 
-[Unreleased]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v4.0.0-beta.1...HEAD
+[Unreleased]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v4.0.0-rc.1...HEAD
+[4.0.0-rc.1]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v4.0.0-beta.1...v4.0.0-rc.1
 [4.0.0-beta.1]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v3.0.0...v4.0.0-beta.1
 [3.0.0]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v3.0.0-rc.3...v3.0.0
 [3.0.0-rc.3]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v3.0.0-rc.2...v3.0.0-rc.3
