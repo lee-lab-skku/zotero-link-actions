@@ -154,26 +154,17 @@ async function dispatch(action, targets, selectedCollection, wordRange = null, p
             if (result.links.length !== 1)
                 throw new RequestError(500, 'INVALID_RESULT', 'The annotation action must return one link per target.');
             const link = result.links[0];
-            if (prefix !== undefined) {
-                if (link.prefix === undefined)
-                    throw new RequestError(500, 'UNSUPPORTED_PREFIX', 'Update the annotation action to report applied prefixes.');
-                if (link.prefix !== prefix || link.itemKey !== targets[0].key)
-                    throw new RequestError(500, 'INVALID_RESULT', 'The annotation action returned inconsistent prefix metadata.');
-            }
-            // Older actions can still serve default requests, but cannot confirm a range.
-            if (wordRange && (link.wordRange === undefined || link.itemKey === undefined))
-                throw new RequestError(500, 'UNSUPPORTED_WORD_RANGE', 'Update the annotation action to report applied word ranges.');
-            if (link.wordRange !== undefined || link.itemKey !== undefined) {
-                const applied = link.wordRange;
-                if (link.itemKey !== targets[0].key || !applied || typeof applied !== 'object'
-                    || !Number.isSafeInteger(applied.totalWords) || applied.totalWords < 0
-                    || !Number.isSafeInteger(applied.start) || !Number.isSafeInteger(applied.end)
-                    || applied.start < 0 || applied.end < applied.start || applied.end > applied.totalWords
-                    || (applied.start === applied.end && (applied.totalWords !== 0 || wordRange))
-                    || applied.start !== (wordRange?.start ?? 0)
-                    || applied.end !== (wordRange ? (wordRange.end ?? applied.totalWords) : Math.min(8, applied.totalWords)))
-                    throw new RequestError(500, 'INVALID_RESULT', 'The annotation action returned inconsistent word range metadata.');
-            }
+            if (link.itemKey !== targets[0].key || (prefix !== undefined && link.prefix !== prefix))
+                throw new RequestError(500, 'INVALID_RESULT', 'The annotation action returned inconsistent target or prefix metadata.');
+            const applied = link.wordRange;
+            if (!applied || typeof applied !== 'object'
+                || !Number.isSafeInteger(applied.totalWords) || applied.totalWords < 0
+                || !Number.isSafeInteger(applied.start) || !Number.isSafeInteger(applied.end)
+                || applied.start < 0 || applied.end < applied.start || applied.end > applied.totalWords
+                || (applied.start === applied.end && (applied.totalWords !== 0 || wordRange))
+                || applied.start !== (wordRange?.start ?? 0)
+                || applied.end !== (wordRange ? (wordRange.end ?? applied.totalWords) : Math.min(8, applied.totalWords)))
+                throw new RequestError(500, 'INVALID_RESULT', 'The annotation action returned inconsistent word range metadata.');
         }
         return result.links;
     } finally {

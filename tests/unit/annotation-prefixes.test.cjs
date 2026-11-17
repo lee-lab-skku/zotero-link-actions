@@ -89,12 +89,12 @@ test('invalid prefixes fail before dispatch', async () => {
     assert.equal((await env.request({ ...request, prefixes: {} })).status, 200);
 });
 
-test('explicit prefixes cannot silently succeed with old or inconsistent actions', async () => {
+test('explicit prefixes cannot silently succeed with missing or inconsistent prefix metadata', async () => {
     const env = await start();
     const bridge = env.Zotero.ActionLinkBridge;
     const capture = bridge.capture.bind(bridge);
     for (const [mutate, code] of [
-        [link => { delete link.prefix; }, 'UNSUPPORTED_PREFIX'],
+        [link => { delete link.prefix; }, 'INVALID_RESULT'],
         [link => { link.prefix = 'different'; }, 'INVALID_RESULT'],
     ]) {
         bridge.capture = (...args) => {

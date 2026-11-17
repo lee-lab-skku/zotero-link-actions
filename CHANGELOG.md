@@ -16,6 +16,12 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 - Action names shown in Actions & Tags now match the documentation: Copy Selection Link, Copy Annotation Link, Copy Note Link, and Agent Link Bridge.
   Importing the backup renames installed actions in place, because actions are matched by key.
 
+### Removed
+
+- **Compatibility with annotation actions older than `3.0.0-rc.3`** in Agent Link Bridge **(breaking)**.
+  Annotation results must report the target key and applied word range, and requested prefixes; otherwise the bridge returns `INVALID_RESULT`, even for default requests.
+  The `UNSUPPORTED_WORD_RANGE` and `UNSUPPORTED_PREFIX` errors no longer occur; import the bridge and all three copylink actions from the same release.
+
 ## [4.0.0-beta.1] &mdash; 2026-11-16
 
 ### Changed

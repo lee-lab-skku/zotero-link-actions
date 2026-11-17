@@ -120,7 +120,7 @@ For explicit requests, verify each returned `itemKey`, `wordRange.start`, and `w
 
 Old bridges can ignore `wordRanges`, so HTTP 200 alone does not confirm that the requested passage was selected.
 Treat missing or mismatched metadata as unsupported or invalid, and do not use the result as the requested passage.
-The updated bridge rejects explicit ranges from old annotation actions with `UNSUPPORTED_WORD_RANGE`; default requests can still work with old actions.
+The current bridge rejects annotation results without matching `itemKey` and `wordRange` metadata with `INVALID_RESULT`.
 
 ## Annotation prefixes
 
@@ -160,7 +160,6 @@ For each explicitly supplied prefix, the returned link includes `prefix` contain
 Verify that `itemKey` and `prefix` match the request before using the link.
 
 Old bridges may ignore `prefixes`; HTTP 200 without matching metadata does not confirm support.
-The updated bridge rejects old annotation actions that cannot confirm prefixes with `UNSUPPORTED_PREFIX`.
 Import the updated bridge and annotation action together and restart Zotero; update the separately installed skill as well.
 
 ## Response and failures
@@ -223,10 +222,8 @@ Annotation options have these error codes:
 | --- | --- | --- |
 | `INVALID_WORD_RANGE` | 400 | Malformed maps, keys outside `itemKeys`, wrong-action use, invalid numbers, or reversed/empty ranges |
 | `WORD_RANGE_OUT_OF_BOUNDS` | 422 | A structurally valid range exceeds the annotation word count, including an explicit range on empty text |
-| `UNSUPPORTED_WORD_RANGE` | 500 | The action did not report the metadata needed to confirm an explicit range |
 | `INVALID_PREFIX` | 400 | Malformed maps, keys outside `itemKeys`, wrong-action use, or non-string values |
-| `UNSUPPORTED_PREFIX` | 500 | The action did not report the metadata needed to confirm an explicit prefix |
-| `INVALID_RESULT` | 500 | Includes mismatched annotation keys or inconsistent applied ranges or prefixes |
+| `INVALID_RESULT` | 500 | Includes missing or mismatched annotation keys, applied ranges, or prefixes |
 
 ### Recovery conditions
 

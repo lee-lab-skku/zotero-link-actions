@@ -123,16 +123,18 @@ test('out-of-bounds ranges fail the entire batch and release the request context
     assert.deepEqual(env.copied, []);
 });
 
-test('legacy annotation actions work without ranges but cannot silently satisfy explicit ranges', async () => {
+test('annotation results without target and range metadata are rejected', async () => {
     const env = await start();
     env.Zotero.ActionsTags.api.actionManager.dispatchActionByKey = async key => {
         env.Zotero.ActionLinkBridge.capture(key, env.targets[2], [], null, 'unknown')
-            .complete([{ uri: 'legacy', label: 'legacy', html: 'legacy' }]);
+            .complete([{ uri: 'bare', label: 'bare', html: 'bare' }]);
     };
-    const result = await env.request(requestRange({ start: 1, end: 2 }));
-    assert.equal(result.status, 500);
-    assert.equal(result.error.code, 'UNSUPPORTED_WORD_RANGE');
-    assert.equal((await env.request(annotationRequest)).status, 200);
+    for (const request of [requestRange({ start: 1, end: 2 }), annotationRequest]) {
+        const result = await env.request(request);
+        assert.equal(result.status, 500);
+        assert.equal(result.error.code, 'INVALID_RESULT');
+        assert.equal(result.links, undefined);
+    }
 });
 
 test('bridge rejects malformed, mismatched or incorrectly associated applied ranges', async () => {
