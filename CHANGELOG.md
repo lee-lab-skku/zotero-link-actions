@@ -11,6 +11,11 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ## [Unreleased]
 
+### Changed
+
+- Action names shown in Actions & Tags now match the documentation: Copy Selection Link, Copy Annotation Link, Copy Note Link, and Agent Link Bridge.
+  Importing the backup renames installed actions in place, because actions are matched by key.
+
 ## [4.0.0-beta.1] &mdash; 2026-11-16
 
 ### Changed

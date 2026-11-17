@@ -3,7 +3,7 @@ operation: 4
 shortcut: ''
 enabled: true
 menu: Copy PDF annotation link
-name: Copy annotation link
+name: Copy Annotation Link
 showInMenu:
   item: false
   collection: false

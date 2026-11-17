@@ -3,7 +3,7 @@ operation: 4
 shortcut: ''
 enabled: true
 menu: Copy Zotero selection link
-name: Copy selection link
+name: Copy Selection Link
 showInMenu:
   item: true
   collection: false

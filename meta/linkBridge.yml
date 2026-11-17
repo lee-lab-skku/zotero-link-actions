@@ -3,7 +3,7 @@ operation: 4
 shortcut: ''
 enabled: true
 menu: ''
-name: Agent link bridge
+name: Agent Link Bridge
 showInMenu:
   item: false
   collection: false

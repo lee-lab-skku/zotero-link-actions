@@ -3,7 +3,7 @@ operation: 4
 shortcut: ''
 enabled: true
 menu: Copy Better Notes link
-name: Copy note link
+name: Copy Note Link
 showInMenu:
   item: true
   collection: false
