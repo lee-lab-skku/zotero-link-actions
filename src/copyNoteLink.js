@@ -24,7 +24,7 @@ try {
     const uri = await Zotero.BetterNotes.api.convert.note2link(item);
     const top = Zotero.Items.getTopLevel([item])[0];
     const citationKey = top.isRegularItem() && top.getField('citationKey');
-    const label = `${item.getField('title')}${citationKey ? ` (${citationKey})` : ''}`;
+    const label = `${item.getField('title') || item.key}${citationKey ? ` (${citationKey})` : ''}`;
     const escapeHTML = value => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;')
         .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 

@@ -36,7 +36,7 @@ Each copylink action adds a menu command that copies a labeled link:
 | --- | --- | --- |
 | Copy Selection Link | Item menu and PDF reader | A `zotero://select` link labeled with the citation key, title, or item key. |
 | Copy Annotation Link | PDF reader annotation menu | A `zotero://open-pdf` link with the annotation key, page, and annotation preview. |
-| Copy Note Link | Item menu for notes | A Better Notes `zotero://note` link labeled with the note title and, when available, the parent item's citation key. |
+| Copy Note Link | Item menu for notes | A Better Notes `zotero://note` link labeled with the note title, or its key when untitled, and, when available, the parent item's citation key. |
 
 Copy Selection Link supports standalone attachments and avoids duplicate links when both a parent and its attachments are selected.
 In the library tab, it preserves a single selected collection when the item belongs to it; multiple or mixed collection and search selections use library-level links.

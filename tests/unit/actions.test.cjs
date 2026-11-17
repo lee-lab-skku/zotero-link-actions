@@ -218,6 +218,15 @@ test('Better Notes supplies the URI unchanged and parent citation keys only deco
         '<a href="zotero://note/8/NOTE0001/?line=4&amp;section=Intro">A &quot;quoted&quot; note &lt;&amp; (Parent26)</a>'], ['copy']]);
 });
 
+test('untitled notes fall back to the note key so the HTML link stays visible', async () => {
+    const env = linkEnvironment();
+    const note = { key: 'NOTE0002', isNote: () => true, isRegularItem: () => false, getField: () => '' };
+    env.Zotero.Items = { getTopLevel: topLevel };
+    env.Zotero.BetterNotes = { api: { convert: { note2link: async () => 'zotero://note/u/NOTE0002/' } } };
+    await run('copyNoteLink', env, { item: note });
+    assert.equal(env.copied[1][1], '<a href="zotero://note/u/NOTE0002/">NOTE0002</a>');
+});
+
 test('menu copy failures propagate to the A&T error handler', async () => {
     for (const name of ['copySelectionLink', 'copyAnnotationLink', 'copyNoteLink']) {
         const env = linkEnvironment();
