@@ -56,6 +56,11 @@ jobs:
           base = f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}"
           tag = os.environ['RELEASE_TAG']
           body = (
+              "### Updating from earlier releases\n\n"
+              "Update Actions from releases before 4.0.0 cannot install this release; "
+              "import `actions-zotero.yml` from this release manually.\n"
+              "Because the repository was renamed, that updater also fails to apply earlier releases "
+              "with JSON backups, reporting that the release has no JSON action backup.\n\n"
               "### Agent skill\n\n"
               f"- [Download the skill ZIP]({base}/releases/download/{tag}/zot-jot.zip)\n"
               f"- [Skill directory at this release tag]({base}/tree/{tag}/skills/zot-jot)\n\n"

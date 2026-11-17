@@ -15,6 +15,8 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 - Action names shown in Actions & Tags now match the documentation: Copy Selection Link, Copy Annotation Link, Copy Note Link, and Agent Link Bridge.
   Importing the backup renames installed actions in place, because actions are matched by key.
+- Release descriptions now tell users of Update Actions from releases before 4.0.0 to import the YAML backup manually.
+  Since the repository rename, that updater also fails to apply earlier releases with JSON backups and reports that no JSON backup exists.
 
 ### Removed
 
