@@ -29,16 +29,12 @@ Do not exclude maintained documents to silence findings; mddt already accommodat
 ## Writing and review
 
 Use an installed mddt skill or a checkout of the [mddt repository](https://github.com/mirinae3145/mddt) for both its references and checker.
-Follow the full [writing and restructuring procedure](https://github.com/mirinae3145/mddt/blob/main/skills/mddt/references/writing.md) before and after editing:
+Start from the skill's [entry](https://github.com/mirinae3145/mddt/blob/main/skills/mddt/SKILL.md) and follow its [writing and restructuring procedure](https://github.com/mirinae3145/mddt/blob/main/skills/mddt/references/writing.md) before and after editing.
+Place content in its tree before writing it, and reread each changed topic whole once it settles.
+Sentence-only corrections and formatting changes that preserve structure need no placement plan.
+To find or verify information in these documents, follow the skill's [reading procedure](https://github.com/mirinae3145/mddt/blob/main/skills/mddt/references/reading.md).
 
-1. Place new or moved content in its tree before writing, choosing its reader, question, document kind, and parent summary.
-   Sentence-only corrections and formatting changes that preserve structure need no placement plan.
-1. Preserve contracts and conditions when moving content, and update links to moved files or headings throughout the collection.
-   Keep the skill's packaged resources self-contained.
-1. Once the content settles, reread each changed topic whole and review its order, forms, and level of detail.
-   Rewrite overviews and parent summaries from the deepest changed documents upward.
-1. Run the [Markdown check](#checking-markdown) and judge the findings.
-
+As part of the procedure's [checking](https://github.com/mirinae3145/mddt/blob/main/skills/mddt/references/writing.md#checking), run the [Markdown check](#checking-markdown) and judge the findings.
 Writers and reviewers judge placement, document kinds, and summaries; the checker cannot decide those questions.
 A run without errors is the automated minimum, not evidence of full conformance.
 
