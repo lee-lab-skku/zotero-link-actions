@@ -11,6 +11,8 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ## [Unreleased]
 
+## [4.0.0] &mdash; 2026-11-19
+
 ### Added
 
 - **License terms**: The actions, build scripts, tests, and documentation are licensed under AGPL-3.0-or-later.
@@ -279,7 +281,8 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 - YAML backup generation and tag-triggered release builds.
 - Optional `/unread` tagging actions, disabled by default.
 
-[Unreleased]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v4.0.0-rc.1...HEAD
+[Unreleased]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v4.0.0...HEAD
+[4.0.0]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v4.0.0-rc.1...v4.0.0
 [4.0.0-rc.1]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v4.0.0-beta.1...v4.0.0-rc.1
 [4.0.0-beta.1]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v3.0.0...v4.0.0-beta.1
 [3.0.0]: https://github.com/lee-lab-skku/zotero-link-actions/compare/v3.0.0-rc.3...v3.0.0
