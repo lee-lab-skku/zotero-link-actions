@@ -1,3 +1,10 @@
+// SPDX-FileCopyrightText: 2023-2024 windingwind, garth74
+// SPDX-FileCopyrightText: 2025-2026 Advanced Additive Manufacturing Systems Laboratory, Sungkyunkwan University
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// @author windingwind, garth74, mirinae3145
+// @link https://github.com/lee-lab-skku/zotero-link-actions
+// @see https://github.com/windingwind/zotero-actions-tags/discussions/115
+
 const Zotero = require('Zotero');
 
 const sink = Zotero.ActionLinkBridge?.capture('copyAnnotationLink', item, items, collection,

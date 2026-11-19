@@ -68,6 +68,13 @@ The following guides cover building, testing, and releasing the actions:
 
 AI coding tools have assisted with API compatibility updates, code review, documentation, and regression tests.
 
-## Credits
+## License and credits
 
-Based on community discussions and contributions in [zotero-actions-tags](https://github.com/windingwind/zotero-actions-tags), including [discussion #115](https://github.com/windingwind/zotero-actions-tags/discussions/115).
+The actions, build scripts, tests, and their documentation are licensed under the GNU Affero General Public License v3.0 or later.
+The zot-jot skill, which is installed and reused independently, is licensed under CC BY 4.0.
+Repository configuration files are dedicated to the public domain under CC0 1.0.
+[`REUSE.toml`](REUSE.toml) and per-file SPDX headers assign each file its license and copyright holders, following the [REUSE](https://reuse.software/) specification.
+The license texts are in [`LICENSES/`](LICENSES/).
+
+This project is based on community discussions and contributions in [zotero-actions-tags](https://github.com/windingwind/zotero-actions-tags).
+The copylink actions began from the script by windingwind and garth74 in [discussion #115](https://github.com/windingwind/zotero-actions-tags/discussions/115), and their source files retain its authors' copyright notices.

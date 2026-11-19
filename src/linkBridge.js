@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2025-2026 Advanced Additive Manufacturing Systems Laboratory, Sungkyunkwan University
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// @author mirinae3145
+// @link https://github.com/lee-lab-skku/zotero-link-actions
+
 const Zotero = require('Zotero');
 const Services = require('Services');
 const PATH = '/action-links';

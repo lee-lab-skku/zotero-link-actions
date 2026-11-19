@@ -27,11 +27,14 @@ class SkillPackageTests(unittest.TestCase):
             archive.extractall(self.root / 'installed')
             expected = {f'zot-jot/{p.relative_to(self.skill).as_posix()}'
                         for p in self.skill.rglob('*') if p.is_file()}
+            expected.add('zot-jot/LICENSE.txt')
             self.assertEqual(set(archive.namelist()), expected)
         installed = self.root / 'installed/zot-jot'
         builder.validate_skill(installed)
         self.assertEqual((installed / 'references/api.md').read_bytes(),
                          (self.skill / 'references/api.md').read_bytes())
+        self.assertEqual((installed / 'LICENSE.txt').read_bytes(),
+                         (ROOT / 'LICENSES/CC-BY-4.0.txt').read_bytes())
         original = self.output.read_bytes()
         builder.build_skill(self.skill, self.output)
         self.assertEqual(self.output.read_bytes(), original)
@@ -49,6 +52,12 @@ class SkillPackageTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     builder.build_skill(self.skill, self.output)
                 self.assertEqual(self.output.read_bytes(), previous)
+
+    def test_license_text_is_only_added_at_packaging_time(self):
+        (self.skill / 'LICENSE.txt').write_text('stale copy')
+        with self.assertRaisesRegex(ValueError, 'added at packaging time'):
+            builder.build_skill(self.skill, self.output)
+        self.assertFalse(self.output.exists())
 
     def test_missing_reference_blocks_packaging(self):
         (self.skill / 'references/api.md').unlink()

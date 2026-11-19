@@ -33,6 +33,8 @@ These requirements apply across changes:
 
 - **Behavioral contracts**: Preserve the [action contracts](#action-contracts) and update relevant behavioral tests.
   Consult [API contracts and test oracles](tests/API-contracts.md) for source-backed expectations and integration boundaries.
+- **Licensing**: Keep every tracked file covered by an SPDX header or a [`REUSE.toml`](REUSE.toml) annotation, and keep existing copyright notices, including those of the original copylink script.
+  Check coverage with `uvx reuse lint`.
 - **Generated files**: Keep generated backups and skill archives in the ignored `dist/` directory.
 - **Verification**: Run the [local checks](#local-checks) and any integration checks relevant to the change.
   Before a release, meet the [release requirements](#release-requirements).
