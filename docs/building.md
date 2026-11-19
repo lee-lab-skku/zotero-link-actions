@@ -50,6 +50,7 @@ See [verification scope and artifact handling](../tests/integration/zotero/READM
 
 Run `python build_skill.py` to validate `skills/zot-jot` and create `dist/zot-jot.zip`.
 The archive contains a top-level `zot-jot/` directory with `SKILL.md` and its resources, preserving relative paths.
+Packaging also adds the CC BY 4.0 text from `LICENSES/` as `LICENSE.txt`, because the skill directory names its license only by URI; the directory must not contain its own copy.
 
 Validation checks the skill name and description, local Markdown document targets, and self-contained resources; missing references and symbolic links are rejected.
 Packaging checks archive entries and bytes and uses stable timestamps and permissions so unchanged payloads produce identical archives.

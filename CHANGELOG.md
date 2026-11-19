@@ -11,6 +11,12 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 ## [Unreleased]
 
+### Added
+
+- **License terms**: The actions, build scripts, tests, and documentation are licensed under AGPL-3.0-or-later.
+  The zot-jot skill uses CC BY 4.0, and configuration uses CC0 1.0.
+  Action scripts and the skill now carry their license and copyright notices.
+
 ### Fixed
 
 - Replacing Agent Link Bridge during a request no longer lets the old request copy to the clipboard or run alongside a new request; the new bridge answers `BUSY` until the old request ends.

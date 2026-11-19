@@ -10,6 +10,9 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent
 SKILL_NAME = 'zot-jot'
+# The skill names its license by URI; the archive also carries the full text.
+LICENSE_TEXT = ROOT / 'LICENSES' / 'CC-BY-4.0.txt'
+LICENSE_NAME = 'LICENSE.txt'
 
 
 def validate_skill(skill_dir):
@@ -65,14 +68,17 @@ def validate_skill(skill_dir):
     return files
 
 
-def build_skill(skill_dir, output):
-    """Package the validated directory with stable paths, timestamps and permissions."""
+def build_skill(skill_dir, output, license_text=LICENSE_TEXT):
+    """Package the validated directory and its license text with stable paths, timestamps and permissions."""
     skill_dir, output = Path(skill_dir), Path(output)
     files = validate_skill(skill_dir)
+    if (skill_dir / LICENSE_NAME).exists():
+        raise ValueError(f'{LICENSE_NAME} is added at packaging time and must not be in the skill directory')
     if output.resolve().is_relative_to(skill_dir.resolve()):
         raise ValueError('The archive must be outside the skill directory')
     payload = {f'{skill_dir.name}/{path.relative_to(skill_dir).as_posix()}': path.read_bytes()
                for path in files}
+    payload[f'{skill_dir.name}/{LICENSE_NAME}'] = Path(license_text).read_bytes()
     output.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(output, 'w', compression=zipfile.ZIP_DEFLATED) as archive:
         for name, content in payload.items():

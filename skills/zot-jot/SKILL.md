@@ -1,6 +1,7 @@
 ---
 name: zot-jot
 description: Generate links to Zotero items, PDF annotations, and Better Notes notes through the Actions & Tags Agent Link Bridge when those links are needed. Also use for bridge setup checks and link-request failures. Library searches, metadata edits, and acquisition are outside this skill.
+license: CC-BY-4.0. Copyright 2025-2026 Advanced Additive Manufacturing Systems Laboratory, Sungkyunkwan University. See https://creativecommons.org/licenses/by/4.0/
 ---
 
 # Zotero &mdash; Jump, Open, Trace
