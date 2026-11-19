@@ -67,7 +67,12 @@ jobs:
               "Extract the ZIP and install the complete `zot-jot/` directory, including `references/`.\n"
               "For installers that accept GitHub skill-directory URLs, such as `skill-installer`, "
               "provide the tagged directory link above rather than the ZIP download link.\n"
-              "Install the skill separately from the Zotero action backup; both links target this release.\n"
+              "Install the skill separately from the Zotero action backup; both links target this release.\n\n"
+              "### License\n\n"
+              "`actions-zotero.yml` is licensed under the "
+              f"[GNU Affero General Public License v3.0 or later]({base}/blob/{tag}/LICENSES/AGPL-3.0-or-later.txt), "
+              "and its action scripts carry their copyright notices.\n"
+              "`zot-jot.zip` is licensed under CC BY 4.0 and includes the license text as `LICENSE.txt`.\n"
           )
           assets = [Path('dist') / name for name in
                     ('actions-zotero.yml', 'zot-jot.zip')]

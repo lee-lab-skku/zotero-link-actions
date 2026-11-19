@@ -15,7 +15,7 @@ Version `2.4.2` describes changes from that baseline, and each later version des
 
 - **License terms**: The actions, build scripts, tests, and documentation are licensed under AGPL-3.0-or-later.
   The zot-jot skill uses CC BY 4.0, and configuration uses CC0 1.0.
-  Action scripts and the skill now carry their license and copyright notices.
+  Action scripts and the skill now carry their license and copyright notices, and release notes link the license text for the action backup.
 
 ### Fixed
 
